@@ -1,0 +1,8 @@
+﻿  functions.cpp
+C:\Users\morkv\source\repos\Laba №2\Laba №2\functions.cpp(52,45): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\morkv\source\repos\Laba №2\Laba №2\functions.cpp(126,45): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\morkv\source\repos\Laba №2\Laba №2\functions.cpp(116,6): warning C4101: TodayDate: неиспользованная локальная переменная
+C:\Users\morkv\source\repos\Laba №2\Laba №2\functions.cpp(161,45): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  main.cpp
+  Создание кода...
+  Laba №2.vcxproj -> C:\Users\morkv\source\repos\Laba №2\x64\Debug\Laba №2.exe
