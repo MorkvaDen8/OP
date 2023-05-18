@@ -16,7 +16,7 @@ int menu() {
 }
 
 void WriteToFile(string filename) {
-	Produñt product;
+	Product product;
 	int n;
 	cout << "Enter the number of products(n): ";
 	cin >> n;
@@ -37,7 +37,7 @@ void WriteToFile(string filename) {
 		cout << "Enter product price: ";
 		cin >> product.price;
 		cout << endl;
-		file.write((char*)&product, sizeof(Produñt));
+		file.write((char*)&product, sizeof(Product));
 	}
 	file.close();
 }
@@ -49,12 +49,12 @@ void ReadFile(string filename) {
 		return;
 	}
 	file.seekg(0, ios::end);
-	int count = file.tellg() / sizeof(Produñt);
+	int count = file.tellg() / sizeof(Product);
 	file.seekg(0, ios::beg);
-	Produñt* product = new Produñt[count];
+	Product* product = new Product[count];
 
 	for (int i = 0; i < count; ++i) {
-		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Produñt));
+		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Product));
 		cout << "Name: " << product[i].name << endl;
 		cout << "Release date: " << product[i].dataBegin[0] << " " << product[i].dataBegin[1] << " " << product[i].dataBegin[2] << endl;
 		cout << "Expiry date: " << product[i].dataEnd[0] << " " << product[i].dataEnd[1] << " " << product[i].dataEnd[2] << endl;
@@ -64,7 +64,7 @@ void ReadFile(string filename) {
 }
 
 void AddToFile(string filename) {
-	Produñt product;
+	Product product;
 	ofstream file(filename, ios::binary | ios::app);
 	if (!file) {
 		cout << "Error opening file!" << endl;
@@ -80,7 +80,7 @@ void AddToFile(string filename) {
 	cout << "Enter product price: ";
 	cin >> product.price;
 	cout << endl;
-	file.write((char*)&product, sizeof(Produñt));
+	file.write((char*)&product, sizeof(Product));
 	file.close();
 }
 
@@ -123,9 +123,9 @@ void ExpirationDate(string filename, int* todayDate) {
 		return;
 	}
 	file.seekg(0, ios::end);
-	int count = file.tellg() / sizeof(Produñt);
+	int count = file.tellg() / sizeof(Product);
 	file.seekg(0, ios::beg);
-	Produñt* product = new Produñt[count];
+	Product* product = new Product[count];
 
 	cout << "Enter output name of file: ";
 	cin >> filename2;
@@ -137,12 +137,12 @@ void ExpirationDate(string filename, int* todayDate) {
 	}
 
 	for (int i = 0; i < count; ++i) {
-		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Produñt));
+		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Product));
 		SumTermin = DaysBetweenDates(product[i].dataBegin, product[i].dataEnd);
 		TerminToEnd = DaysBetweenDates(todayDate, product[i].dataEnd);
 		riz = (float)TerminToEnd / (float)SumTermin;
 		if (riz <= 0.1) {
-			file2.write((char*)&product[i], sizeof(Produñt));
+			file2.write((char*)&product[i], sizeof(Product));
 		}
 	}
 	file.close();
@@ -158,12 +158,12 @@ void TenDays(string filename, int* todayDate) {
 		return;
 	}
 	file.seekg(0, ios::end);
-	int count = file.tellg() / sizeof(Produñt);
+	int count = file.tellg() / sizeof(Product);
 	file.seekg(0, ios::beg);
-	Produñt* product = new Produñt[count];
+	Product* product = new Product[count];
 	cout << "Products produced in the last 10 days:" << endl;
 	for (int i = 0; i < count; ++i) {
-		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Produñt));
+		file.read(reinterpret_cast<char*>(&product[i]), sizeof(Product));
 		riz = DaysBetweenDates(product[i].dataBegin, todayDate);
 		if (riz <= 10) {
 			cout << "Name: " << product[i].name << endl;

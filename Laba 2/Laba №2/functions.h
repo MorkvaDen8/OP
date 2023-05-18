@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-struct Produñt {
+struct Product {
 	string name;
 	int dataBegin[3];
 	int dataEnd[3];
