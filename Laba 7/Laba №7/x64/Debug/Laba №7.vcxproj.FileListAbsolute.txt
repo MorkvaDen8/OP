@@ -1,0 +1,4 @@
+C:\Users\morkv\source\repos\Laba №7\Laba №7\x64\Debug\Laba №7.vcxproj.AssemblyReference.cache
+C:\Users\morkv\source\repos\Laba №7\Laba №7\x64\Debug\Laba №7.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\morkv\source\repos\Laba №7\Laba №7\x64\Debug\Laba7.MyForm.resources
+C:\Users\morkv\source\repos\Laba №7\Laba №7\x64\Debug\Laba №7.vcxproj.GenerateResource.cache
