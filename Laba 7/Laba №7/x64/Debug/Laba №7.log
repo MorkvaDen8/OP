@@ -1,5 +1,5 @@
 ﻿  MyForm.cpp
-C:\Users\morkv\source\repos\Laba №7\Laba №7\MyForm.h(236,22): warning C4101: ex: неиспользованная локальная переменная
-C:\Users\morkv\source\repos\Laba №7\Laba №7\MyForm.h(239,14): warning C4101: ex: неиспользованная локальная переменная
+C:\Users\morkv\source\repos\Laba №7\Laba №7\MyForm.h(264,22): warning C4101: ex: неиспользованная локальная переменная
+C:\Users\morkv\source\repos\Laba №7\Laba №7\MyForm.h(267,14): warning C4101: ex: неиспользованная локальная переменная
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   Laba №7.vcxproj -> C:\Users\morkv\source\repos\Laba №7\x64\Debug\Laba №7.exe

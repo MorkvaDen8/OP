@@ -47,6 +47,7 @@ namespace Laba7 {
 	private: System::Windows::Forms::TextBox^ NumberText2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ NumberText3;
+	private: System::Windows::Forms::Button^ button2;
 
 
 	protected:
@@ -71,6 +72,7 @@ namespace Laba7 {
 			this->NumberText2 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->NumberText3 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// NumberText1
@@ -96,7 +98,7 @@ namespace Laba7 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(117, 133);
+			this->button1->Location = System::Drawing::Point(18, 138);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(136, 33);
 			this->button1->TabIndex = 2;
@@ -146,11 +148,22 @@ namespace Laba7 {
 			this->NumberText3->Enter += gcnew System::EventHandler(this, &MyForm::NumberText3_Enter);
 			this->NumberText3->Leave += gcnew System::EventHandler(this, &MyForm::NumberText3_Leave);
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(210, 138);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(136, 33);
+			this->button2->TabIndex = 7;
+			this->button2->Text = L"Clear";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::ButtonClear_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(382, 220);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->NumberText3);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->NumberText2);
@@ -159,7 +172,7 @@ namespace Laba7 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->NumberText1);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Number Search";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -211,21 +224,36 @@ namespace Laba7 {
 		try {
 			PhoneNumber number1(text1);
 			PhoneNumber number2(text2);
-			std::string number3 = text3;
+			std::string numb1 = number1.GetNumber(); 
+			std::string numb2 = number2.GetNumber();
+			std::string numb3 = text3;
 
-			if (number3.length() > 17 || number3[0] != '+' || !isdigit(number3[1]) || !isdigit(number3[2]) ||
-				number3[3] != '(' || !isdigit(number3[4]) || !isdigit(number3[5]) || !isdigit(number3[6]) ||
-				number3[7] != ')' || !isdigit(number3[8]) || !isdigit(number3[9]) || !isdigit(number3[10]) || 
-				number3[11] != '-' || !isdigit(number3[12]) || !isdigit(number3[13]) || 
-				number3[14] != '-' || !isdigit(number3[15]) || !isdigit(number3[16])) {
+			if ((numb3.length() > 17 || numb3[0] != '+' || !isdigit(numb3[1]) || !isdigit(numb3[2]) ||
+				numb3[3] != '(' || !isdigit(numb3[4]) || !isdigit(numb3[5]) || !isdigit(numb3[6]) ||
+				numb3[7] != ')' || !isdigit(numb3[8]) || !isdigit(numb3[9]) || !isdigit(numb3[10]) || 
+				numb3[11] != '-' || !isdigit(numb3[12]) || !isdigit(numb3[13]) || 
+				numb3[14] != '-' || !isdigit(numb3[15]) || !isdigit(numb3[16])) ||
+
+				(numb2.length() > 17 || numb2[0] != '+' || !isdigit(numb2[1]) || !isdigit(numb2[2]) ||
+				numb2[3] != '(' || !isdigit(numb2[4]) || !isdigit(numb2[5]) || !isdigit(numb2[6]) ||
+				numb2[7] != ')' || !isdigit(numb2[8]) || !isdigit(numb2[9]) || !isdigit(numb2[10]) ||
+				numb2[11] != '-' || !isdigit(numb2[12]) || !isdigit(numb2[13]) ||
+				numb2[14] != '-' || !isdigit(numb2[15]) || !isdigit(numb2[16])) 
+
+				||(numb1.length() > 17 || numb1[0] != '+' || !isdigit(numb1[1]) || !isdigit(numb1[2]) ||
+				numb1[3] != '(' || !isdigit(numb1[4]) || !isdigit(numb1[5]) || !isdigit(numb1[6]) ||
+				numb1[7] != ')' || !isdigit(numb1[8]) || !isdigit(numb1[9]) || !isdigit(numb1[10]) ||
+				numb1[11] != '-' || !isdigit(numb1[12]) || !isdigit(numb1[13]) ||
+				numb1[14] != '-' || !isdigit(numb1[15]) || !isdigit(numb1[16])))
+			{
 				throw "Wrong format";
 			}
 
-			if (number3[1] != '3' || number3[2] != '8') {
+			if (numb3[1] != '3' || numb3[2] != '8' || numb2[1] != '3' || numb2[2] != '8' || numb1[1] != '3' || numb1[2] != '8') {
 				throw 380;
 			}
 
-			if ((number3 != number2.GetNumber()) && (number3 != number1.GetNumber())) {
+			if ((numb3 != number2.GetNumber()) && (numb3 != number1.GetNumber())) {
 				MessageBox::Show("The specified number was not found!");
 			}
 			else {
@@ -240,5 +268,17 @@ namespace Laba7 {
 			MessageBox::Show("This is a number from another country!(Not Ukraine +380)" , "Error");
 		}
 	}
+
+private: System::Void ButtonClear_Click(System::Object^ sender, System::EventArgs^ e) {
+	NumberText1->Text = "";
+	NumberText2->Text = "";
+	NumberText3->Text = "";
+	NumberText1->Text = "+38(0XX)XXX-XX-XX";
+	NumberText1->ForeColor = SystemColors::WindowFrame;
+	NumberText2->Text = "+38(0XX)XXX-XX-XX";
+	NumberText2->ForeColor = SystemColors::WindowFrame;
+	NumberText3->Text = "+38(0XX)XXX-XX-XX";
+	NumberText3->ForeColor = SystemColors::WindowFrame;
+}
 };
 }
