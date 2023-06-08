@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Array.cpp">
+    <ClCompile Include="class.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="functions.cpp">
@@ -26,10 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Array.h">
+    <ClInclude Include="functions.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="functions.h">
+    <ClInclude Include="class.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

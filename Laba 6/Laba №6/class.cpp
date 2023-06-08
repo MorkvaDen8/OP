@@ -1,4 +1,4 @@
-#include "Array.h"
+#include "class.h"
 
 template <typename T>
 Array<T>::Array(int size) {
@@ -11,7 +11,7 @@ Array<T>::Array(int size) {
 }
 
 template <typename T>
-Array<T>::~Array(){
+Array<T>::~Array() {
 	delete[] data;
 }
 
@@ -57,6 +57,20 @@ void Array<T>::NewElement() {
 	if (index < size) {
 		data[index] = value;
 	}
+
+	else if (index == size) {
+		size += 1;
+		T* newData = new T[size];
+
+		for (int i = 0; i < size - 1; i++) {
+			newData[i] = data[i];
+		}
+
+		newData[index] = value;
+		delete[] data;
+		data = newData;
+	}
+
 	else {
 		cout << "Your index is outside the array!" << endl;
 	}
@@ -120,4 +134,5 @@ void Array<T>::ShowArray() {
 	}
 	cout << endl;
 }
+
 

@@ -1,5 +1,15 @@
 #include "functions.h"
 
+int ArrayType() {
+	int type;
+	cout << "1.Integer" << endl;
+	cout << "2.Float" << endl;
+	cout << "3.Char" << endl;
+	cout << "Enter type of array: ";
+	cin >> type;
+	return type;
+}
+
 int TextMenu() {
 	int choice;
 	cout << endl;
@@ -12,16 +22,6 @@ int TextMenu() {
 	cout << "Enter you choice: " << endl;
 	cin >> choice;
 	return choice;
-}
-
-int ArrayType() {
-	int type;
-	cout << "1.Integer" << endl;
-	cout << "2.Float" << endl;
-	cout << "3.Char" << endl;
-	cout << "Enter type of array: ";
-	cin >> type;
-	return type;
 }
 
 void menu1(int size) {

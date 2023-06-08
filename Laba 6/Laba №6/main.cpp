@@ -12,9 +12,9 @@ int main() {
 	else if (type == 2) {
 		menu2(size);
 	}
-
 	else if(type == 3){
 		menu3(size);
 	}
+
 	return 0;
 }
