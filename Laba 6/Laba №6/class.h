@@ -25,6 +25,7 @@ public:
 		bool EndArray();
 		T& ValueElement();
 		void NextElement();
+		int GetPosition();
 	};
 	void ShowArray();
 };

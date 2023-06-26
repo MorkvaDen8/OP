@@ -2,6 +2,7 @@
 
 int menuS() {
 	int choice;
+	cout << endl;
 	cout << "1.Write to File" << endl;
 	cout << "2 Read File" << endl;
 	cout << "3. Add File" << endl;
@@ -29,8 +30,8 @@ void WriteToFileS(string filename) {
 	}
 	cout << "Enter number rows: ";
 	cin >> n;
+	cin.ignore();
 	for (int i = 0; i < n; i++) {
-		cin.ignore();
 		getline(cin, stroka);
 		file << stroka;
 		file << endl;
@@ -87,7 +88,7 @@ string DublicateS(string stroka) {
 	}
 
 	if (count > 1) {
-		newstroka += '(' + to_string(stroka[n - 1] - '0' ) + ')';
+		newstroka += '(' + to_string(stroka[n - 1] - '0') + ')';
 	}
 	else {
 		newstroka += stroka[n - 1];
@@ -99,7 +100,7 @@ string DublicateS(string stroka) {
 string SortStringS(string stroka) {
 	int n = stroka.length();
 	string newstroka, word, numbers;
-	for (int i=0; i<n; i++)
+	for (int i = 0; i < n; i++)
 		if (isdigit(stroka[i])) {
 			numbers += stroka[i];
 		}
@@ -119,14 +120,19 @@ string SortStringS(string stroka) {
 }
 
 void SortFileS(string filename) {
-	string stroka;
+	string stroka, fileout;
 	ifstream file(filename);
 	if (!file) {
 		cout << "File opening error!" << endl;
 		return;
 	}
+	cout << "Enter name of other file(text2.txt): ";
+	cin >> fileout;
+	ofstream file2(fileout);
 	while (getline(file, stroka)) {
 		cout << SortStringS(stroka) << endl;
+		file2 << SortStringS(stroka) << endl;
 	}
 	file.close();
+	file2.close();
 }

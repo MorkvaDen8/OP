@@ -8,7 +8,7 @@ int mode(int argc, char** argv) {
 
 	string flag{ argv[1] }, mode{ argv[2] };
 	if (flag != "-mode") {
-		return -1; 
+		return -1;
 	}
 
 	if (mode == "FilePointer") {
@@ -25,7 +25,6 @@ int mode(int argc, char** argv) {
 
 int main(int argc, char** argv) {
 	int choice;
-	string filename;
 	int selectedMode = mode(argc, argv);
 
 	if (selectedMode == -1) {
@@ -61,15 +60,17 @@ int main(int argc, char** argv) {
 			}
 			break;
 		case 4:
-			cout << "Enter name of new file (format: text2.txt): ";
-			cin >> filename;
 			if (selectedMode == 1) {
 				SortFileP(GetFilenameP());
+
 			}
 			else if (selectedMode == 2) {
 				SortFileS(GetFilenameS());
+
 			}
 			break;
+		case 0:
+			return 1;
 		}
 	}
 

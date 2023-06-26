@@ -7,6 +7,7 @@ using namespace std;
 
 int menuP() {
     int choice;
+    cout << endl;
     cout << "1. Write to File" << endl;
     cout << "2. Read File" << endl;
     cout << "3. Add File" << endl;
@@ -18,25 +19,26 @@ int menuP() {
 }
 
 char* GetFilenameP() {
-    char* filename = new char[100];
+    char* filename = new char[50];
     cout << "Enter filename: ";
-    cin.getline(filename, 100);
+    cin.ignore();
+    cin.getline(filename, 50);
     return filename;
 }
 
 void WriteToFileP(char* filename) {
     FILE* file = fopen(filename, "w");
     int n;
-    char stroka[100];
+    char stroka[256];
     if (!file) {
         cout << "File opening error!" << endl;
         return;
     }
     cout << "Enter number of rows: ";
     cin >> n;
+    cin.ignore();
     for (int i = 0; i < n; i++) {
-        cin.ignore();
-        cin.getline(stroka, 100);
+        cin.getline(stroka, 256);
         fputs(stroka, file);
         fputc('\n', file);
     }
@@ -45,12 +47,12 @@ void WriteToFileP(char* filename) {
 
 void ReadFileP(char* filename) {
     FILE* file = fopen(filename, "r");
-    char stroka[100];
+    char stroka[256];
     if (!file) {
         cout << "File opening error!" << endl;
         return;
     }
-    while (fgets(stroka, 100, file) != NULL) {
+    while (fgets(stroka, 256, file) != NULL) {
         cout << stroka;
     }
     fclose(file);
@@ -58,21 +60,21 @@ void ReadFileP(char* filename) {
 
 void AddToFileP(char* filename) {
     FILE* file = fopen(filename, "a");
-    char stroka[100];
+    char stroka[256];
     if (!file) {
         cout << "File opening error!" << endl;
         return;
     }
     cout << "Enter text line to add to the file: ";
     cin.ignore();
-    cin.getline(stroka, 100);
+    cin.getline(stroka, 256);
     fputs(stroka, file);
     fputc('\n', file);
     fclose(file);
 }
 
 char* DublicateP(char* stroka) {
-    char* newstroka = new char[100];
+    char* newstroka = new char[256];
     int n = strlen(stroka);
     int count = 1;
     int newstrokaIndex = 0;
@@ -109,8 +111,8 @@ char* DublicateP(char* stroka) {
 
 char* SortStringP(char* stroka) {
     int n = strlen(stroka);
-    char* newstroka = new char[200];
-    char numbers[100];
+    char* newstroka = new char[n + 1];
+    char numbers[256];
     int numbersIndex = 0;
     int newstrokaIndex = 0;
 
@@ -121,33 +123,45 @@ char* SortStringP(char* stroka) {
     }
     numbers[numbersIndex] = '\0';
 
-    for (int i = n - 1; i >= 0; i--) {
+    for (int i = 0; i < n; i++) {
         if (!isdigit(stroka[i])) {
             newstroka[newstrokaIndex++] = stroka[i];
         }
     }
-    newstroka[newstrokaIndex] = '\0';
 
     char* duplicatedNumbers = DublicateP(numbers);
     strcat(duplicatedNumbers, newstroka);
-    strcpy(newstroka, duplicatedNumbers);
+    strncpy(newstroka, duplicatedNumbers, n);
+    newstroka[n] = '\0';  // Додавання нульового символу в кінці нового рядка
     delete[] duplicatedNumbers;
 
     return newstroka;
 }
 
+
+
+
 void SortFileP(char* filename) {
     FILE* file = fopen(filename, "r");
-    char stroka[100];
+    char stroka[256];
     if (!file) {
         cout << "File opening error!" << endl;
         return;
     }
-    while (fgets(stroka, 100, file) != NULL) {
+
+    char* fileout = new char[50];
+    cout << "Enter name of other file(text2.txt): ";
+    cin.getline(fileout, 50);
+    FILE* file2 = fopen(fileout, "w");
+
+    while (fgets(stroka, 256, file) != NULL) {
         char* sortedStroka = SortStringP(stroka);
         cout << sortedStroka;
+        cout << endl;
+        fputs(sortedStroka, file2);
+        fputc('\n', file2);
         delete[] sortedStroka;
     }
     fclose(file);
+    fclose(file2);
 }
-

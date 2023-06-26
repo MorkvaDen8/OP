@@ -124,6 +124,11 @@ void Array<T>::Iterator::NextElement() {
 }
 
 template <typename T>
+int Array<T>::Iterator::GetPosition() {
+	return position;
+}
+
+template <typename T>
 void Array<T>::ShowArray() {
 	Iterator it(this);
 	cout << "Array: ";
